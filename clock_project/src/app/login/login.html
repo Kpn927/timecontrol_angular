@@ -1,0 +1,55 @@
+<div class="login-form-wrapper">
+  <form (ngSubmit)="handleSubmit()" class="login-form">
+      <div class="login-logo-container">
+      </div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+    
+    <div class="form-group">
+      <label for="email"></label>
+      <input
+      type="text"
+        id="email"
+        class="form-control"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Ingresa tu gmail o usuario"
+        required
+        [disabled]="loading"
+        />
+    </div>
+    <div class="form-group password-group">
+      <label htmlFor="password"></label>
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        id="password"
+        class="form-control" [(ngModel)]="password"
+        name="password"
+        placeholder='Ingresa tu contraseña'
+        required
+        [disabled]="loading"
+        />
+        <button type="button" class="toggle-password-visibility" (click)="togglePasswordVisibility()" [disabled]="loading">
+          <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+          <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+        </svg>
+        
+        <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+          <path d="M11.5 11.5c-2.296 -1.344 -5.14 -3 -7.5 -3.5" />
+          <path d="M18.392 18.382a8.005 8.005 0 0 0 -5.192 -6.382" />
+          <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c1.171 -2 3.128 -3.5 5.303 -3.982" />
+          <path d="M3 3l18 18" />
+        </svg>
+      </button>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loading">
+      {{ loading ? 'Logeandose...' : 'Login' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="handleRegisterClick()" [disabled]="loading">
+      Registrarse
+    </button>
+  </form>
+</div>

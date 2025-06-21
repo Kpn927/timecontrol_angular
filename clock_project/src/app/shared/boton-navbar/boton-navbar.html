@@ -1,0 +1,16 @@
+<li class="li">
+  <div
+    class="button-container {{ boton.CNBoton || '' }}"
+    (mouseenter)="handleMouseEnter()"
+    (mouseleave)="handleMouseLeave()"
+  >
+    <button
+      (click)="handleClick()"
+      class="button"
+      [style.color]="textColor"
+    >
+      {{ boton.texto }}
+      <div class="hover-box" [class.show]="isMouseOver"></div>
+    </button>
+  </div>
+</li>
