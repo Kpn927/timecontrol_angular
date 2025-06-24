@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.welcome-section {
+  text-align: center;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.logged-in-heading {
+  color: #2563eb;
+}
+
+.logged-out-heading {
+  color: #1f2937;
+}
+
+.paragraph {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-name-paragraph {
+  color: #374151;
+}
+
+.generic-message-paragraph {
+  color: #4b5563;
+}
+
+.button-group {
+  display: center;
+  gap: 10 rem;
+}
+
+.button {
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.primary-button {
+  background-color: #3b82f6;
+}
+
+.primary-button:hover {
+  background-color: #2563eb;
+}
+
+.login-button {
+  background-color: #22c55e;
+}
+
+.login-button:hover {
+  background-color: #16a34a;
+  
+}
+
+.register-button {
+  background-color: #9333ea;
+  margin: 20px;
+}
+
+.register-button:hover {
+  background-color: #7e22ce;
+}

@@ -1,1 +1,31 @@
-<p>home-page works!</p>
+<div class="container">
+  <div *ngIf="isLoggedIn" class="welcome-section logged-in-section">
+    <h1 class="heading logged-in-heading">¡Bienvenido a mis relojes!</h1>
+    <p *ngIf="currentUserName" class="paragraph user-name-paragraph">Hola, {{ currentUserName }}</p>
+    <button
+      (click)="navigateToClocks()"
+      class="button primary-button"
+    >
+      Ir a Relojes
+    </button>
+  </div>
+
+  <div *ngIf="!isLoggedIn" class="welcome-section logged-out-section">
+    <h1 class="heading logged-out-heading">Bienvenido a mis relojes</h1>
+    <p class="paragraph generic-message-paragraph">Para explorar, inicia sesión o regístrate.</p>
+    <div class="button-group">
+      <button
+        (click)="navigateToLogin()"
+        class="button login-button"
+      >
+        Iniciar Sesión
+      </button>
+      <button
+        (click)="navigateToRegister()"
+        class="button register-button"
+      >
+        Registrarse
+      </button>
+    </div>
+  </div>
+</div>

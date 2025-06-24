@@ -2,7 +2,6 @@
 <div class="register-container">
   <div class="register-card">
     <form (ngSubmit)="onRegister()">
-      <!-- Campo de Nombre de Usuario -->
       <div class="form-group">
         <input
           type="text"
@@ -15,7 +14,6 @@
         >
       </div>
 
-      <!-- Campo de Correo Electrónico -->
       <div class="form-group">
         <input
           type="email"
@@ -28,7 +26,6 @@
         >
       </div>
 
-      <!-- Campo de Contraseña con Toggle -->
       <div class="form-group password-group">
         <input
           [type]="showPassword ? 'text' : 'password'"
@@ -45,7 +42,6 @@
           (click)="togglePasswordVisibility()"
           aria-label="Alternar visibilidad de contraseña"
         >
-          <!-- Icono de ojo para visibilidad de contraseña -->
           <svg
             *ngIf="!showPassword"
             xmlns="http://www.w3.org/2000/svg"
@@ -77,11 +73,9 @@
         {{ successMessage }}
       </div>
 
-      <!-- Botón principal de Registro (azul) -->
       <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
 
-    <!-- Botón secundario para ir a Iniciar Sesión (gris) -->
     <button type="button" class="btn btn-secondary" (click)="goToLogin()">
       Iniciar Sesión
     </button>

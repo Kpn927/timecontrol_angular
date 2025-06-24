@@ -2,7 +2,7 @@ import { Component, Inject, PLATFORM_ID, OnInit, OnDestroy } from '@angular/core
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, Router } from '@angular/router';
 import { CustomNavbar } from './shared/custom-navbar/custom-navbar';
-import { Auth } from './auth'; // Importa tu servicio Auth
+import { Auth } from './auth';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,23 +21,21 @@ export class App implements OnInit, OnDestroy {
   appIconPath = '/reloj.webp';
   currentUserName: string | null = null;
   navbarButtons: { texto: string, ruta?: string, onClick?: () => void }[] = [];
-  private subscriptions: Subscription = new Subscription(); // Para gestionar todas las suscripciones
+  private subscriptions: Subscription = new Subscription();
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
-    private authService: Auth // Inyecta el servicio Auth
+    private authService: Auth
   ) {}
 
   ngOnInit(): void {
-    // Suscribirse a los cambios en el estado de login
     this.subscriptions.add(
       this.authService.isLoggedIn$.subscribe(isLoggedIn => {
         this.updateNavbarButtons(isLoggedIn);
       })
     );
 
-    // Suscribirse a los cambios en el nombre de usuario
     this.subscriptions.add(
       this.authService.userName$.subscribe(userName => {
         this.currentUserName = userName;
@@ -46,7 +44,6 @@ export class App implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Desuscribirse de todas las suscripciones para evitar fugas de memoria
     this.subscriptions.unsubscribe();
   }
 
@@ -65,7 +62,6 @@ export class App implements OnInit, OnDestroy {
         ];
       }
     } else {
-      // Para SSR o entornos no-navegador, muestra los botones de "no logueado"
       this.navbarButtons = [
         { texto: 'Registrar', ruta: '/register' },
         { texto: 'Login', ruta: '/login' },
@@ -74,8 +70,6 @@ export class App implements OnInit, OnDestroy {
   }
 
   logout(): void {
-    this.authService.logout(); // Llama al método logout del servicio Auth
-    // La redirección a /login ya está manejada dentro del método logout del servicio.
-    // Si quieres asegurarte aquí también, puedes hacerlo: this.router.navigate(['/login']);
+    this.authService.logout();
   }
 }

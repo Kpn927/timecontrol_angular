@@ -6,10 +6,12 @@ import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 interface LoginResponse {
+
   message: string;
   userid?: string;
   username?: string;
   token?: string;
+
 }
 
 @Injectable({
@@ -42,8 +44,9 @@ export class Auth {
     return this.http.post<LoginResponse>(this.loginApiUrl, { email, password }).pipe(
       tap((response: LoginResponse) => {
         if (isPlatformBrowser(this.platformId)) {
-          // Almacenar en localStorage
+
           localStorage.setItem('isLoggedIn', 'true');
+          
           if (response.userid) {
             localStorage.setItem('userId', response.userid);
           }
