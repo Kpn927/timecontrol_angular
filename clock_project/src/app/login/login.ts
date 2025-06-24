@@ -26,9 +26,11 @@ export class Login implements OnInit {
   constructor(private router: Router, private authService: Auth) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['']);
-    }
+    this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['']);
+      }
+    });
   }
 
   async handleSubmit(): Promise<void> {
