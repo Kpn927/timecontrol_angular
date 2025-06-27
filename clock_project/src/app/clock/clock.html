@@ -18,6 +18,12 @@
     <div *ngIf="currentComponent === 'text-clock'" class="main-digital-clock-wrapper">
       <app-text-clock></app-text-clock>
     </div>
+    <div *ngIf="currentComponent === 'meter-clock'" class="main-digital-clock-wrapper">
+      <app-meter-clock></app-meter-clock>
+    </div>
+    <div *ngIf="currentComponent === 'progress-clock'" class="main-digital-clock-wrapper">
+      <app-progress-clock></app-progress-clock>
+    </div>
   </div>
 
   <hr>

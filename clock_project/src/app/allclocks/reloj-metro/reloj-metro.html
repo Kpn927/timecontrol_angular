@@ -1,0 +1,42 @@
+<div class="meter-clock-container">  
+    <!-- Barra de horas -->
+    <div class="time-bar">
+      <label>Horas</label>
+      <div class="meter">
+        <div *ngFor="let h of [].constructor(12); let i = index"
+             class="meter-block"
+             [class.filled]="i < (userHour % 12)"></div>
+      </div>
+      <span class="am-pm">{{ isPM ? 'PM' : 'AM' }}</span>
+    </div>
+  
+    <!-- Barra de minutos -->
+    <div class="time-bar">
+      <label>Minutos</label>
+      <div class="meter">
+        <div *ngFor="let m of [].constructor(60); let i = index"
+             class="meter-block"
+             [class.filled]="i < userMinute"></div>
+      </div>
+    </div>
+  
+    <!-- Barra de segundos -->
+    <div class="time-bar">
+      <label>Segundos</label>
+      <div class="meter">
+        <div *ngFor="let s of [].constructor(60); let i = index"
+             class="meter-block"
+             [class.filled]="i < userSecond"></div>
+      </div>
+    </div>
+  
+    <app-time-slider
+    *ngIf="mostrarSlider"
+    [mostrarSlider]="mostrarSlider"
+    [relojEstatico]="relojEstatico"
+    (tiempoCambiado)="actualizarHoraManual($event)"
+    (ajusteIniciado)="comenzarAjuste()"
+    (ajusteTerminado)="terminarAjuste()">
+  </app-time-slider>
+  </div>
+  

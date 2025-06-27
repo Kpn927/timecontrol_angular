@@ -7,6 +7,8 @@ import { RelojAnalogico } from '../allclocks/reloj-analogico/reloj-analogico';
 import { RelojMorse } from '../allclocks/reloj-morse/reloj-morse';
 import { Voice } from '../allclocks/voice/voice';
 import { RelojText } from '../allclocks/reloj-text/reloj-text';
+import { RelojMetro } from '../allclocks/reloj-metro/reloj-metro';
+import { RelojProgresivo } from '../allclocks/reloj-progresivo/reloj-progresivo';
 
 @Component({
   selector: 'app-parent',
@@ -19,7 +21,9 @@ import { RelojText } from '../allclocks/reloj-text/reloj-text';
     RelojAnalogico,
     RelojMorse,
     Voice, 
-    RelojText
+    RelojText,
+    RelojMetro,
+    RelojProgresivo
   ],
   styleUrl: './clock.css'
 })
@@ -34,8 +38,8 @@ export class Clock {
     { texto: 'Mostrar Reloj Morse', onClick: () => this.showSpecificComponent('morse-clock') },
     { texto: 'Mostrar Voice', onClick: () => this.showSpecificComponent('voice') },
     { texto: 'Mostrar Text', onClick: () => this.showSpecificComponent('text-clock') },
-    { texto: 'Botón 6 (No hace nada específico)', onClick: () => this.showSpecificComponent('') },
-    { texto: 'Botón 7 (No hace nada específico)', onClick: () => this.showSpecificComponent('') },
+    { texto: 'Mostrar Reloj metro', onClick: () => this.showSpecificComponent('meter-clock') },
+    { texto: 'Mostrar Reloj Progresivo', onClick: () => this.showSpecificComponent('progress-clock') },
     { texto: 'Botón 8 (No hace nada específico)', onClick: () => this.showSpecificComponent('') },
     { texto: 'Botón 9 (No hace nada específico)', onClick: () => this.showSpecificComponent('') }
   ];

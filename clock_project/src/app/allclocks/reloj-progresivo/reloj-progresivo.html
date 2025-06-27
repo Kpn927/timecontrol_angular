@@ -1,0 +1,16 @@
+<div class="progress-clock-container">
+    <div class="progress-display">
+      <p>{{ progressPercentage }}% del día transcurrido</p>
+      <p>Hora actual: {{ timeText }}</p>
+    </div>
+  
+    <app-time-slider
+        *ngIf="mostrarSlider"
+        [mostrarSlider]="mostrarSlider"
+        [relojEstatico]="relojEstatico"
+        (tiempoCambiado)="actualizarHoraManual($event)"
+        (ajusteIniciado)="comenzarAjuste()"
+        (ajusteTerminado)="terminarAjuste()">
+    </app-time-slider>
+  </div>
+  
