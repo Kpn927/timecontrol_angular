@@ -1,0 +1,46 @@
+<!-- reloj-morse.html -->
+<div class="morse-clock-container">
+  <h2 class="clock-title">Reloj en Código Morse</h2>
+
+  <div class="current-time-display">
+    Hora Actual: {{ horaActual }}
+  </div>
+
+  <div class="morse-lights-wrapper">
+    <div
+      class="morse-light"
+      [class.active-light]="activeLightIndex === 0"
+      [class.light-on]="lightStates[0]"
+    >
+      <span>H</span>
+    </div>
+
+    <div
+      class="morse-light"
+      [class.active-light]="activeLightIndex === 1"
+      [class.light-on]="lightStates[1]"
+    >
+      <span>M</span>
+    </div>
+
+    <div
+      class="morse-light"
+      [class.active-light]="activeLightIndex === 2"
+      [class.light-on]="lightStates[2]"
+    >
+      <span>S</span>
+    </div>
+  </div>
+
+  <app-time-slider
+    [mostrarSlider]="mostrarSlider"
+    [relojEstatico]="relojEstatico"
+    [currentHours]="sliderHours"
+    [currentMinutes]="sliderMinutes"
+    [currentSeconds]="sliderSeconds"
+    (tiempoCambiado)="actualizarHoraManual($event)"
+    (tiempoCambiando)="actualizarHoraManual($event)"
+    (ajusteIniciado)="onAjusteIniciado()"
+    (ajusteTerminado)="onAjusteTerminado()"
+  ></app-time-slider>
+</div>

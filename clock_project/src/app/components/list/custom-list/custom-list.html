@@ -1,0 +1,11 @@
+<div class="custom-list-container">
+  <div class="list-header">
+    <div class="list-brand" (click)="goToHome()">
+      <img *ngIf="rutaIcono" [src]="rutaIcono" alt="List Icon" class="list-icon">
+      <h1 class="list-title">{{ titulo }}</h1>
+    </div>
+  </div>
+  <div class="list-buttons-wrapper">
+    <app-boton-list *ngFor="let btn of botones" [boton]="btn"></app-boton-list>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="analog-clock-container">
+  
+  <h2 class="clock-title">Reloj Analógico</h2>
+  
+  <canvas #analogClockCanvas width="400" height="400"></canvas>
+  
+  <div class="digital-time-display">Hora: {{ horaActual }}</div>
+
+  <app-time-slider
+    *ngIf="mostrarSlider"
+    [mostrarSlider]="mostrarSlider"
+    [relojEstatico]="relojEstatico"
+    (tiempoCambiado)="actualizarHoraManual($event)"
+    (ajusteIniciado)="comenzarAjuste()"
+    (ajusteTerminado)="terminarAjuste()">
+  </app-time-slider>
+</div>

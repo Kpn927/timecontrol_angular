@@ -1,9 +1,10 @@
 import { Component, Inject, PLATFORM_ID, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterOutlet, Router } from '@angular/router';
-import { CustomNavbar } from './shared/custom-navbar/custom-navbar';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { CustomNavbar } from './components/shared/custom-navbar/custom-navbar';
 import { Auth } from './auth';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { Subscription } from 'rxjs';
     CustomNavbar
   ]
 })
+
 export class App implements OnInit, OnDestroy {
   title = 'Relojes';
   appIconPath = '/reloj.webp';
@@ -32,7 +34,7 @@ export class App implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.add(
       this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-        this.updateNavbarButtons(isLoggedIn);
+        this.updateNavbarButtons(isLoggedIn, this.router.url);
       })
     );
 
@@ -41,20 +43,37 @@ export class App implements OnInit, OnDestroy {
         this.currentUserName = userName;
       })
     );
+
+    this.subscriptions.add(
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe((event: NavigationEnd) => {
+        this.authService.isLoggedIn$.subscribe(isLoggedIn => { 
+          this.updateNavbarButtons(isLoggedIn, event.urlAfterRedirects); 
+        }).unsubscribe();
+      })
+    );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  private updateNavbarButtons(isLoggedIn: boolean): void {
+  private updateNavbarButtons(isLoggedIn: boolean, currentUrl: string): void {
+    const isClocksRoute = currentUrl.startsWith('/clocks');
+
     if (isPlatformBrowser(this.platformId)) {
-      if (!isLoggedIn) {
+      if (isClocksRoute) {
+        this.navbarButtons = [
+          { texto: 'Inicio', ruta: '/' }
+        ];
+      } else if (!isLoggedIn) {
         this.navbarButtons = [
           { texto: 'Registrar', ruta: '/register' },
           { texto: 'Login', ruta: '/login' },
         ];
       } else {
+        // If logged in and not on /clocks/ route
         this.navbarButtons = [
           { texto: 'Inicio', ruta: '/' },
           { texto: 'Relojes', ruta: '/clocks' },
@@ -62,10 +81,16 @@ export class App implements OnInit, OnDestroy {
         ];
       }
     } else {
-      this.navbarButtons = [
-        { texto: 'Registrar', ruta: '/register' },
-        { texto: 'Login', ruta: '/login' },
-      ];
+      if (isClocksRoute) {
+         this.navbarButtons = [
+          { texto: 'Inicio', ruta: '/' }
+        ];
+      } else {
+        this.navbarButtons = [
+          { texto: 'Registrar', ruta: '/register' },
+          { texto: 'Login', ruta: '/login' },
+        ];
+      }
     }
   }
 

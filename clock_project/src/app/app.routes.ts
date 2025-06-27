@@ -3,6 +3,8 @@ import { Register } from './register/register';
 import { HomePage } from './home-page/home-page';
 import { Login } from './login/login';
 import { Clock } from './clock/clock';
+import { RelojDigital } from './allclocks/reloj-digital/reloj-digital';
+
 export const routes: Routes = [
   {
     path: 'login',
@@ -21,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'clocks',
     component: Clock
+  },
+  {
+    path: 'clocks/reloj-digital',
+    component: RelojDigital
   },
   {
     path: '**',

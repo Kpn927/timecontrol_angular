@@ -1,0 +1,61 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
+  box-sizing: border-box; 
+}
+
+.main-content-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 2rem;
+}
+
+.position-list {
+  margin: 0 !important;
+  flex-shrink: 0;
+  padding-left: 2rem;
+}
+
+.main-digital-clock-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 !important;
+  padding-right: 2rem; 
+}
+
+
+hr {
+  width: 80%;
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .main-content-area {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .position-list {
+    margin: 0 auto !important;
+    padding-left: 0;
+  }
+
+  .main-digital-clock-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+}

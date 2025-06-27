@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <a (click)="goToHome()" class="logo">
+    <img [src]="rutaIcono" alt="App Icon">
+    <p class="logo-title"> {{ titulo }} </p>
+  </a>
+
+  <ul class="ul">
+    <app-boton-navbar *ngFor="let boton of botones; let i = index" [boton]="boton"></app-boton-navbar>
+  </ul>
+</nav>

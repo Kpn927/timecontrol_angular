@@ -1,0 +1,15 @@
+.reloj-digital {
+  font-family: monocraft, Arial, sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline;
+}
+
+@font-face {
+  font-family: 'monocraft';
+  src: url('/Monocraft.ttc') format('truetype');
+}
