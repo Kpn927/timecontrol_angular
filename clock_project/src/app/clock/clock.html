@@ -1,14 +1,22 @@
 <div class="app-container">
 
-  <!-- Nuevo contenedor para la lista y los relojes -->
   <div class="main-content-area">
     <app-custom-list class="position-list" [botones]="ejemplo"></app-custom-list>
 
     <div *ngIf="currentComponent === 'digital-clock'" class="main-digital-clock-wrapper">
       <app-digital-clock class="main-digital-clock"></app-digital-clock>
     </div>
+    <div *ngIf="currentComponent === 'morse-clock'" class="main-digital-clock-wrapper">
+      <app-reloj-morse></app-reloj-morse>
+    </div>
     <div *ngIf="currentComponent === 'analog-clock'" class="main-digital-clock-wrapper">
       <app-reloj-analogico></app-reloj-analogico>
+    </div>
+    <div *ngIf="currentComponent === 'voice'" class="main-digital-clock-wrapper">
+      <app-voice-clock></app-voice-clock>
+    </div>
+    <div *ngIf="currentComponent === 'text-clock'" class="main-digital-clock-wrapper">
+      <app-text-clock></app-text-clock>
     </div>
   </div>
 

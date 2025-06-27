@@ -9,6 +9,10 @@
   display: inline;
 }
 
+.slider{
+  font-size: 1rem;
+}
+
 @font-face {
   font-family: 'monocraft';
   src: url('/Monocraft.ttc') format('truetype');
