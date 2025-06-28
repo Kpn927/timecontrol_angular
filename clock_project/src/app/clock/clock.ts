@@ -11,6 +11,7 @@ import { RelojMetro } from '../allclocks/reloj-metro/reloj-metro';
 import { RelojProgresivo } from '../allclocks/reloj-progresivo/reloj-progresivo';
 import { RelojRomano } from '../allclocks/reloj-romano/reloj-romano';
 import { RelojEspiral } from '../allclocks/reloj-espiral/reloj-espiral';
+import { RelojSegmentos } from '../allclocks/reloj-segmentos/reloj-segmentos';
 
 @Component({
   selector: 'app-parent',
@@ -27,7 +28,8 @@ import { RelojEspiral } from '../allclocks/reloj-espiral/reloj-espiral';
     RelojMetro,
     RelojProgresivo,
     RelojRomano,
-    RelojEspiral
+    RelojEspiral,
+    RelojSegmentos
   ],
   styleUrl: './clock.css'
 })
@@ -46,7 +48,7 @@ export class Clock {
     { texto: 'Mostrar Reloj Progresivo', onClick: () => this.showSpecificComponent('progress-clock') },
     { texto: 'Mostrar Reloj Romano', onClick: () => this.showSpecificComponent('roman-clock') },
     { texto: 'Mostrar Reloj Espiral', onClick: () => this.showSpecificComponent('spiral-clock') },
-    { texto: 'Botón 10 (No hace nada específico)', onClick: () => this.showSpecificComponent('') }
+    { texto: 'Mostrar Reloj Siete Segmentos', onClick: () => this.showSpecificComponent('seven-seg') }
   ];
   constructor() {}
 
