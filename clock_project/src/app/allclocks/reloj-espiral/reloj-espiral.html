@@ -1,0 +1,20 @@
+
+<div class="spiral-container">
+    <div class="spiral" [ngStyle]="getSpiralStyle(userHour, 24)"></div>
+  
+    <div class="spiral" [ngStyle]="getSpiralStyle(userMinute, 60)"></div>
+  
+    <div class="spiral" [ngStyle]="getSpiralStyle(userSecond, 60)"></div>
+  
+    <div class="current-time">Hora actual: {{ userHour | number: '2.0' }}:{{ userMinute | number: '2.0' }}:{{ userSecond | number: '2.0' }}</div>
+  
+    <app-time-slider
+        *ngIf="mostrarSlider"
+        [mostrarSlider]="mostrarSlider"
+        [relojEstatico]="relojEstatico"
+        (tiempoCambiado)="actualizarHoraManual($event)"
+        (ajusteIniciado)="comenzarAjuste()"
+        (ajusteTerminado)="terminarAjuste()">
+    </app-time-slider>
+  </div>
+  

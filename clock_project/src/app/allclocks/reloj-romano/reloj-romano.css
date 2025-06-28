@@ -1,0 +1,17 @@
+.roman-clock-container {
+    text-align: center;
+    font-family: monocraft, 'Arial';
+    width: 600px;
+    height: 400px;
+}
+  
+.time-display {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+@font-face {
+  font-family: 'monocraft';
+  src: url('/Monocraft.ttc') format('truetype');
+}
+  

@@ -9,6 +9,8 @@ import { Voice } from '../allclocks/voice/voice';
 import { RelojText } from '../allclocks/reloj-text/reloj-text';
 import { RelojMetro } from '../allclocks/reloj-metro/reloj-metro';
 import { RelojProgresivo } from '../allclocks/reloj-progresivo/reloj-progresivo';
+import { RelojRomano } from '../allclocks/reloj-romano/reloj-romano';
+import { RelojEspiral } from '../allclocks/reloj-espiral/reloj-espiral';
 
 @Component({
   selector: 'app-parent',
@@ -23,7 +25,9 @@ import { RelojProgresivo } from '../allclocks/reloj-progresivo/reloj-progresivo'
     Voice, 
     RelojText,
     RelojMetro,
-    RelojProgresivo
+    RelojProgresivo,
+    RelojRomano,
+    RelojEspiral
   ],
   styleUrl: './clock.css'
 })
@@ -40,8 +44,9 @@ export class Clock {
     { texto: 'Mostrar Text', onClick: () => this.showSpecificComponent('text-clock') },
     { texto: 'Mostrar Reloj metro', onClick: () => this.showSpecificComponent('meter-clock') },
     { texto: 'Mostrar Reloj Progresivo', onClick: () => this.showSpecificComponent('progress-clock') },
-    { texto: 'Botón 8 (No hace nada específico)', onClick: () => this.showSpecificComponent('') },
-    { texto: 'Botón 9 (No hace nada específico)', onClick: () => this.showSpecificComponent('') }
+    { texto: 'Mostrar Reloj Romano', onClick: () => this.showSpecificComponent('roman-clock') },
+    { texto: 'Mostrar Reloj Espiral', onClick: () => this.showSpecificComponent('spiral-clock') },
+    { texto: 'Botón 10 (No hace nada específico)', onClick: () => this.showSpecificComponent('') }
   ];
   constructor() {}
 
